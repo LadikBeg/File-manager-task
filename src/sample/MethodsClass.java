@@ -2,10 +2,13 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.Cursor;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class MethodsClass {
@@ -43,6 +46,7 @@ public class MethodsClass {
             directoryList.setItems(list3);
             txtFileName.clear();
             txtRenameFile.setVisible(false);
+            txtRenameFile.setText("");
             btnRenamefile.setVisible(false);
             lblRenameFile.setVisible(true);
             lblRenameFile.setText("Файл успешно переименнован : " + file2 + " на : " + file3);
@@ -90,17 +94,33 @@ public class MethodsClass {
         }
     }
 
-    //меняем курсор когда наводится на значимые объекты!
-    public void cursorHand(Button btnCreate, Button btnRenamefile, Button bntRename, Button btnRemove, CheckBox checkFile,
-                           CheckBox checkDirectory) {
-        btnCreate.setCursor(Cursor.HAND);
-        btnRenamefile.setCursor(Cursor.HAND);
-        bntRename.setCursor(Cursor.HAND);
-        btnRemove.setCursor(Cursor.HAND);
-        checkFile.setCursor(Cursor.HAND);
-        checkDirectory.setCursor(Cursor.HAND);
-    }
+    public void writeFile(Button btnWriteToFile, ListView directoryList, TextField txtWriteToFile) {
+        btnWriteToFile.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                File file1 = new File(".");
+                String[] files1 = file1.list();
+                ObservableList list1 = FXCollections.observableArrayList(files1);
+                File file2 = new File(String.valueOf(list1.get(directoryList.getSelectionModel().getSelectedIndex())));
+                String fileContent = txtWriteToFile.getText();
+                if (file2.isFile()){
+                    try {
+                        FileWriter fileWriter = new FileWriter(file2);
+                        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                        bufferedWriter.write(fileContent);
+                        bufferedWriter.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else if (file2.isDirectory()){
+                    System.out.println("Directory!");
+                }
 
+
+
+            }
+        });
+    }
 
 
 }

@@ -1,11 +1,14 @@
 package sample;
 
 import java.io.File;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.effect.Blend;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 
 
@@ -50,6 +53,12 @@ public class Controller {
     private CheckBox checkDirectory;
 
     @FXML
+    private Button btnWriteToFile;
+
+    @FXML
+    private TextField txtWriteToFile;
+
+    @FXML
     void initialize() {
 
         File file = new File(".");
@@ -58,7 +67,14 @@ public class Controller {
         directoryList.setItems(list);
         lblPath.setText(file.getAbsolutePath());
         MethodsClass methods = new MethodsClass();
-        methods.cursorHand(btnCreate, btnRenamefile, bntRename, btnRemove, checkFile, checkDirectory);
+        ButtonClass buttonEffect = new ButtonClass();
+        buttonEffect.cursorHand(btnCreate, btnRenamefile, bntRename, btnRemove, checkFile, checkDirectory);
+        buttonEffect.dropShadowsButton(bntRename);
+        buttonEffect.dropShadowsButton(btnCreate);
+        buttonEffect.dropShadowsButton(btnRemove);
+        buttonEffect.dropShadowsButton(btnRenamefile);
+        buttonEffect.dropShadowsTextFild(txtFileName);
+        buttonEffect.dropShadowsTextFild(txtRenameFile);
         btnCreate.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -80,6 +96,6 @@ public class Controller {
             lblRenameFile.setText("");
             methods.fileRename(lblFileName, lblFileRemove, txtRenameFile, btnRenamefile, directoryList, txtFileName, lblRenameFile);
         });
+        methods.writeFile(btnWriteToFile,directoryList,txtWriteToFile);
     }
-
 }

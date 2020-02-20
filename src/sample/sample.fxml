@@ -6,7 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -20,39 +20,32 @@
       <RowConstraints />
    </rowConstraints>
    <children>
-      <AnchorPane fx:id="AnchorPaneFirst" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #979AAA;">
+      <AnchorPane fx:id="AnchorPaneFirst" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #E6BA33;">
          <children>
-            <ListView fx:id="directoryList" layoutX="219.0" layoutY="34.0" prefHeight="336.0" prefWidth="262.0" style="-fx-background-color: #148BFF;">
+            <ListView fx:id="directoryList" layoutX="215.0" layoutY="26.0" prefHeight="362.0" prefWidth="219.0" style="-fx-background-color: #148BFF;">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor>
-               <effect>
-                  <DropShadow />
-               </effect></ListView>
+               </cursor></ListView>
             <Button fx:id="btnCreate" layoutX="14.0" layoutY="55.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="113.0" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="Create" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
                <effect>
-                  <DropShadow />
+                  <Blend />
                </effect></Button>
-            <Button fx:id="btnRemove" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="Remove" textFill="WHITE">
-               <effect>
-                  <DropShadow />
-               </effect></Button>
-            <Button fx:id="bntRename" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="Rename" textFill="WHITE">
-               <effect>
-                  <DropShadow />
-               </effect></Button>
-            <Label fx:id="lblPath" layoutX="215.0" layoutY="14.0" prefHeight="18.0" prefWidth="270.0" />
-            <TextField fx:id="txtFileName" layoutX="14.0" layoutY="110.0" style="-fx-background-radius: 20;" />
+            <Button fx:id="btnRemove" layoutX="14.0" layoutY="160.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="Delete" textFill="WHITE" />
+            <Button fx:id="bntRename" layoutX="14.0" layoutY="236.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="114.0" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="Rename" textFill="WHITE" />
+            <Label fx:id="lblPath" layoutX="159.0" layoutY="5.0" prefHeight="18.0" prefWidth="270.0" />
+            <TextField fx:id="txtFileName" layoutX="14.0" layoutY="110.0" promptText="File name" style="-fx-background-radius: 20;" />
             <Label fx:id="lblFileName" layoutX="14.0" layoutY="136.0" prefHeight="18.0" prefWidth="201.0" />
             <Label fx:id="lblFileRemove" layoutX="14.0" layoutY="202.0" prefHeight="18.0" prefWidth="202.0" />
-            <TextField fx:id="txtRenameFile" layoutX="14.0" layoutY="278.0" visible="false" />
-            <Button fx:id="btnRenamefile" layoutX="14.0" layoutY="304.0" mnemonicParsing="false" text="rename" visible="false" />
+            <TextField fx:id="txtRenameFile" layoutX="14.0" layoutY="287.0" style="-fx-background-radius: 20;" visible="false" />
+            <Button fx:id="btnRenamefile" layoutX="60.0" layoutY="321.0" mnemonicParsing="false" style="-fx-background-color: #148BFF; -fx-background-radius: 20;" text="rename" textFill="WHITE" visible="false" />
             <Label fx:id="lblRenameFile" layoutX="15.0" layoutY="282.0" prefHeight="18.0" prefWidth="202.0" visible="false" />
             <CheckBox fx:id="checkFile" layoutX="136.0" layoutY="55.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="71.0" style="-fx-background-radius: 0;" text="File" />
             <CheckBox fx:id="checkDirectory" layoutX="136.0" layoutY="76.0" mnemonicParsing="false" style="-fx-background-radius: 0;" text="Directory" />
+            <Button fx:id="btnWriteToFile" layoutX="511.0" layoutY="30.0" mnemonicParsing="false" text="Button" />
+            <TextField fx:id="txtWriteToFile" layoutX="463.0" layoutY="64.0" />
          </children>
       </AnchorPane>
    </children>
